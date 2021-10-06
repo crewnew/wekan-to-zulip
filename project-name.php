@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$wekan_action = $object->description;
 
 	// dump to file so you can see for testing
-	file_put_contents('callback.test.txt', print_r($object, true));
+	//file_put_contents('callback.test.txt', print_r($object, true));
 }
 
 
@@ -81,7 +81,7 @@ curl_setopt_array($curl, [
 	CURLOPT_URL => 'https://slack.crewnew.com/api/v1/messages',
 	CURLOPT_USERAGENT => 'Codular Sample cURL Request',
 	CURLOPT_POST => 1,
-	CURLOPT_USERPWD => 'board-bot@slack.crewnew.com:eRsSjks7FpRn3apuge4LRev98xDsbpdx',
+	CURLOPT_USERPWD => 'boards-bot@slack.crewnew.com:4e7AsLEhiaefFSxYFnNKzuI0QaMOIJz1',
 	CURLOPT_POSTFIELDS => [
 		'type' => 'stream',
 		'to' => $board_name,
