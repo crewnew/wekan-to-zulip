@@ -61,9 +61,8 @@ $result = $client->request('POST', "", [
 ]);
 $username = json_decode($result->getBody(), true)["data"]["directus_users_by_pk"]["first_name"];
 
-/** TODO
-  And once we have the @username then create mutation:
-  mutation MyMutation {
+/** TODO create mutation:
+  mutation AddUsername {
     update_working_hours_by_pk(pk_columns: {id: 52}, _set: {username: "$username"}) {
       id
     }
@@ -74,13 +73,13 @@ $username = json_decode($result->getBody(), true)["data"]["directus_users_by_pk"
 // dump to file so you can see for testing
 file_put_contents('daily_standup-test.txt', print_r($obj, true));
 
-if ($operation == 'INSERT' AND $status_string == 'published') {
-  $message = $username . ' added for ' . $new_date . ' on project ['.$project.'](https://cms.crewnew.com/admin/content/projects/'.$project.'): ' . $type_string . ' - [' . $task . '](https://cms.crewnew.com/admin/content/dailystandup/'.$id.')';
-  if (isset($longer_text)) $message .= ' ('.$longer_text.').';
-  if (isset($min_hrs)) $message .= ' '.$min_hrs.'-' . $max_hrs . 'h.';
-  if (isset($deadline)) $message .= ' Plan to complete on '.$new_deadline.'.';
-  if (isset($url)) $message .= ' [URL>>]('.$url.').';
-  if (isset($completed_at)) $message .= ' Completed already on '.$new_completed_at.').';
+if ($operation == 'INSERT' and $status_string == 'published') {
+  $message = $username . ' added for ' . $new_date . ' on project [' . $project . '](https://cms.crewnew.com/admin/content/projects/' . $project . '): ' . $type_string . ' - [' . $task . '](https://cms.crewnew.com/admin/content/dailystandup/' . $id . ')';
+  if (isset($longer_text)) $message .= ' (' . $longer_text . ').';
+  if (isset($min_hrs)) $message .= ' ' . $min_hrs . '-' . $max_hrs . 'h.';
+  if (isset($deadline)) $message .= ' Plan to complete on ' . $new_deadline . '.';
+  if (isset($url)) $message .= ' [URL>>](' . $url . ').';
+  if (isset($completed_at)) $message .= ' Completed already on ' . $new_completed_at . ').';
   require_once('../projects/crewnew/zulip/sendZulip.php');
-  sendZulip('test', 'daily standup', $message, 'stream'); // to/stream/channel, topic/subject, content, type
+  sendZulip('checkinout-standup', 'daily standup', $message, 'stream'); // to/stream/channel, topic/subject, content, type
 }
