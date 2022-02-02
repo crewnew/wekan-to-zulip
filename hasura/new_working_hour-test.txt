@@ -1,0 +1,92 @@
+stdClass Object
+(
+    [event] => stdClass Object
+        (
+            [session_variables] => stdClass Object
+                (
+                    [x-hasura-role] => admin
+                )
+
+            [op] => UPDATE
+            [data] => stdClass Object
+                (
+                    [old] => stdClass Object
+                        (
+                            [status] => published
+                            [days] => Array
+                                (
+                                    [0] => mon
+                                    [1] => tue
+                                    [2] => wed
+                                    [3] => thu
+                                    [4] => fri
+                                )
+
+                            [start_hour] => 08:00:00
+                            [minimum_hrs] => 7
+                            [username] => Kristijan
+                            [maximum_hrs] => 9
+                            [id] => 74
+                            [type] => w
+                            [date_created] => 2022-02-02T19:51:15.166+00:00
+                            [comment] => Working 6+ hours from 09AM to 5PM and sometimes in the evening after 8:30 PM
+                            [user_updated] => 
+                            [user_created] => 931c549b-edaa-4545-98f3-d4372977fdef
+                            [date_updated] => 
+                        )
+
+                    [new] => stdClass Object
+                        (
+                            [status] => published
+                            [days] => Array
+                                (
+                                    [0] => mon
+                                    [1] => tue
+                                    [2] => wed
+                                    [3] => thu
+                                    [4] => fri
+                                )
+
+                            [start_hour] => 08:00:00
+                            [minimum_hrs] => 7
+                            [username] => kristijan
+                            [maximum_hrs] => 9
+                            [id] => 74
+                            [type] => w
+                            [date_created] => 2022-02-02T19:51:15.166+00:00
+                            [comment] => Working 6+ hours from 09AM to 5PM and sometimes in the evening after 8:30 PM
+                            [user_updated] => 
+                            [user_created] => 931c549b-edaa-4545-98f3-d4372977fdef
+                            [date_updated] => 
+                        )
+
+                )
+
+            [trace_context] => stdClass Object
+                (
+                    [trace_id] => 519943649780079266
+                    [span_id] => 1.164380274916E+19
+                )
+
+        )
+
+    [created_at] => 2022-02-02T20:45:51.45251Z
+    [id] => 2397a0d4-51a0-498b-98f7-4181ebc17b16
+    [delivery_info] => stdClass Object
+        (
+            [max_retries] => 0
+            [current_retry] => 0
+        )
+
+    [trigger] => stdClass Object
+        (
+            [name] => new_working_hour
+        )
+
+    [table] => stdClass Object
+        (
+            [schema] => public
+            [name] => working_hours
+        )
+
+)

@@ -1,0 +1,59 @@
+stdClass Object
+(
+    [event] => stdClass Object
+        (
+            [session_variables] => 
+            [op] => INSERT
+            [data] => stdClass Object
+                (
+                    [old] => 
+                    [new] => stdClass Object
+                        (
+                            [min_hrs] => 
+                            [status] => published
+                            [points] => 0
+                            [project] => 96
+                            [url] => 
+                            [day] => 2022-02-02
+                            [completed_at] => 
+                            [longer_text] => 
+                            [deadline] => 
+                            [max_hrs] => 
+                            [id] => 13
+                            [task] => test
+                            [type] => Array
+                                (
+                                    [0] => yesterday
+                                )
+
+                            [date_created] => 2022-02-02T22:03:04.021+00:00
+                            [user_updated] => 
+                            [user_created] => 6cc78ea6-1320-42e3-be9d-4471b69d9532
+                            [date_updated] => 
+                        )
+
+                )
+
+            [trace_context] => 
+        )
+
+    [created_at] => 2022-02-02T22:03:03.977166Z
+    [id] => 32239af5-f28c-473d-8967-2681dd601180
+    [delivery_info] => stdClass Object
+        (
+            [max_retries] => 0
+            [current_retry] => 0
+        )
+
+    [trigger] => stdClass Object
+        (
+            [name] => daily_standup
+        )
+
+    [table] => stdClass Object
+        (
+            [schema] => public
+            [name] => dailystandup
+        )
+
+)
