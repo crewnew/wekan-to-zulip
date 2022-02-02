@@ -1,4 +1,5 @@
 <?php
+// FC: /public_html/crewnew.com/apply2
 
 @$server = $_SERVER;
 @$post = $_POST;
@@ -71,6 +72,6 @@ if ($operation == 'INSERT' AND $status_string == 'published') {
   if (isset($deadline)) $message .= ' Plan to complete on '.$new_deadline.'.';
   if (isset($url)) $message .= ' [URL>>]('.$url.').';
   if (isset($completed_at)) $message .= ' Completed already on '.$new_completed_at.').';
-  require_once('sendZulip.php');
+  require_once('../projects/crewnew/zulip/sendZulip.php');
   sendZulip('test', 'daily standup', $message, 'stream'); // to/stream/channel, topic/subject, content, type
 }
