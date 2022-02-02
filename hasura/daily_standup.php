@@ -45,14 +45,23 @@ $new_deadline = date("D jS", $timestamp_deadline);
 $timestamp_completed = strtotime($completed_at);
 $new_completed_at = date("D jS", $timestamp_completed);
 
-/**  TODO: get real username instead $user_id:
-  query MyQuery {
-    directus_users_by_pk(id: "$user_id") {
-      first_name
-    }
-  }
-  Response: https://i.imgur.com/44cWDp8.png
 
+// Get the username from Directus ID
+require_once(dirname(__FILE__) . '/assets/zulipFunctions.php');
+
+$result = $client->request('POST', "", [
+  'json' => [
+    'query' => ' query  {
+          directus_users_by_pk(id: "' . $user_id . '") {
+            first_name
+          }
+                    }
+                ',
+  ]
+]);
+$username = json_decode($result->getBody(), true)["data"]["directus_users_by_pk"]["first_name"];
+
+/** TODO
   And once we have the @username then create mutation:
   mutation MyMutation {
     update_working_hours_by_pk(pk_columns: {id: 52}, _set: {username: "$username"}) {
@@ -66,7 +75,7 @@ $new_completed_at = date("D jS", $timestamp_completed);
 file_put_contents('daily_standup-test.txt', print_r($obj, true));
 
 if ($operation == 'INSERT' AND $status_string == 'published') {
-  $message = $user_id . ' added for ' . $new_date . ' on project ['.$project.'](https://cms.crewnew.com/admin/content/projects/'.$project.'): ' . $type_string . ' - [' . $task . '](https://cms.crewnew.com/admin/content/dailystandup/'.$id.')';
+  $message = $username . ' added for ' . $new_date . ' on project ['.$project.'](https://cms.crewnew.com/admin/content/projects/'.$project.'): ' . $type_string . ' - [' . $task . '](https://cms.crewnew.com/admin/content/dailystandup/'.$id.')';
   if (isset($longer_text)) $message .= ' ('.$longer_text.').';
   if (isset($min_hrs)) $message .= ' '.$min_hrs.'-' . $max_hrs . 'h.';
   if (isset($deadline)) $message .= ' Plan to complete on '.$new_deadline.'.';
